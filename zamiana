@@ -1,0 +1,87 @@
+#include <sstream>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+using namespace std;
+
+class anagram
+{
+	
+	ifstream plik1;
+	ofstream plik2;
+	string slowo1;
+	
+	public:
+		anagram();						
+		~anagram();
+string anagramik(string anagram);
+	
+	
+	void sprawdz();
+
+
+
+};
+
+anagram::anagram()
+{
+	plik1.open("c:\\jeden.txt", ios::in);
+	plik2.open("c:\\dwa.txt", ios::out);
+}
+
+void anagram::sprawdz()
+{
+	
+	while(!plik1.eof())
+    {
+    	cout<<"\n";
+  		 plik1>>slowo1;
+  		 cout<<slowo1<<" \n";
+  	
+        cout<<  anagramik(slowo1);  
+		 
+    }
+   plik1.close();
+   
+ 
+	
+	
+		   
+};
+
+string anagram::anagramik(string anagram)
+{
+	
+	string slowo2=anagram;
+	for (int i = 0; i<slowo1.length()-1; i++)
+    {
+        for (int j = 0; j<slowo2.length()-1; j++)
+        {
+            if (slowo2[j]>slowo2[j+1])
+                swap(slowo2[j], slowo2[j+1]);
+        }
+    }
+
+
+	int random = rand() % slowo2.length() + 1;
+	swap(slowo2[random],slowo2[random-1]);
+
+
+	plik2<<slowo2;
+    return slowo2;
+
+}
+
+anagram::~anagram(){
+    plik1.close();
+    plik2.close();
+}
+
+int main(int argc, char** argv) {
+	 string plik2;
+	anagram wyslij;
+	wyslij.sprawdz();
+
+	return 0;
+}
